@@ -49,9 +49,21 @@ Multi-platform content engine: YouTube, TikTok, and Instagram Reels. One suite, 
 
 ## Step 0 — First-Run Setup
 
-Check for config at `~/.studio/config.json`. If missing, run the setup interview before proceeding with any command.
+Check for config at `~/.studio/config.json`. If missing:
 
-**Setup interview — ask each question in sequence:**
+**First, check for existing skill configs to import:**
+
+```bash
+VIRAL_CONFIG=~/.viral/config.json
+SPY_HOOKS=~/.spy/hooks.md
+```
+
+- If `~/.viral/config.json` exists → offer: "Found your /viral config. Import niche, audience, handle, and credibility from it? (yes/no)"
+  - If yes → pre-fill those fields, only ask for missing studio-specific fields (frequency, goal, API key)
+  - If no → run full interview
+- If `~/.spy/hooks.md` exists → auto-set `spy_hooks: true`, tell user "Spy hook library detected — hooks and scripts will use your proven templates."
+
+**Setup interview — only ask what wasn't imported:**
 
 1. Channel name + YouTube handle (e.g. @yourchannel)
 2. Niche + audience in one sentence (e.g. "personal finance for UK 25-35s")
